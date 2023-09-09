@@ -143,6 +143,7 @@ acc_df, gyr_df = read_data_from_files(files)
 # Merging datasets
 # --------------------------------------------------------------
 
+data_merged = pd.concat([acc_df.iloc[:, :3], gyr_df], axis=1)
 
 # --------------------------------------------------------------
 # Resample data (frequency conversion)
