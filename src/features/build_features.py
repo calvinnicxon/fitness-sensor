@@ -77,6 +77,22 @@ for col in predictor_columns:
 # Principal component analysis PCA
 # --------------------------------------------------------------
 
+df_pca = df_lowpass.copy()
+PCA = PrincipalComponentAnalysis()
+
+pc_value = PCA.determine_pc_explained_variance(df_pca, predictor_columns)
+
+plt.figure(figsize=(10, 10))
+plt.plot(range(1, len(predictor_columns) + 1), pc_value)
+plt.xlabel("principal component number")
+plt.ylabel("explained variance")
+plt.show()
+
+df_pca = PCA.apply_pca(df_pca, predictor_columns, 3)
+
+subset = df_pca[df_pca["set"] == 35]
+
+subset[["pca_1", "pca_2", "pca_3"]].plot()
 
 # --------------------------------------------------------------
 # Sum of squares attributes
