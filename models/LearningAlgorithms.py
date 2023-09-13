@@ -282,8 +282,8 @@ class ClassificationAlgorithms:
         # Apply the model
         pred_prob_training_y = knn.predict_proba(train_X)
         pred_prob_test_y = knn.predict_proba(test_X)
-        pred_training_y = knn.predict(train_X)
-        pred_test_y = knn.predict(test_X)
+        pred_training_y = knn.predict(train_X.values)
+        pred_test_y = knn.predict(test_X.values)
         frame_prob_training_y = pd.DataFrame(pred_prob_training_y, columns=knn.classes_)
         frame_prob_test_y = pd.DataFrame(pred_prob_test_y, columns=knn.classes_)
 
